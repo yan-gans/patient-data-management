@@ -1,10 +1,11 @@
-﻿namespace WebApplication1.Entities;
+﻿namespace WebApplication1.DTO;
 
-public class Medicament
+public class MedicamentDTO
 {
     public int IdMedicament { get; set; }
     public string Name { get; set; }
     public string Description { get; set; }
     public string Type { get; set; }
-    public virtual ICollection<PrescriptionMedicament> Prescription_Meds { get; }= null!;
+    public int Dose { get; set; }
+    public string Details { get; set; }
 }

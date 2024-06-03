@@ -3,18 +3,18 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WebApplication1.Entities;
 namespace WebApplication1.Configs;
 
-public class Prescription_MedicamentConfiguration
+public class PrescriptionMedicamentConfiguration: IEntityTypeConfiguration<PrescriptionMedicament>
 {
-    public void Configure(EntityTypeBuilder<Prescription_Medicament> modelBuilder)
+    public void Configure(EntityTypeBuilder<PrescriptionMedicament> modelBuilder)
     {
         modelBuilder
-            .HasKey(x => x.IdPrescription);
+            .HasKey(x => new {x.IdPrescription,x.IdMedicament}).HasName("Prescription_Medicament_pk");
         modelBuilder
             .Property(x => x.IdPrescription)
             .ValueGeneratedOnAdd()
             .IsRequired();
         modelBuilder
-            .ToTable("Prescription");
+            .ToTable("Prescription_Medicament");
         modelBuilder
             .Property(x => x.Details)
             .HasMaxLength(100)
@@ -25,8 +25,8 @@ public class Prescription_MedicamentConfiguration
             .HasForeignKey(x => x.IdMedicament);
         
         modelBuilder
-            .HasOne(x => x.Patient)
-            .WithMany(x => x.Prescriptions)
-            .HasForeignKey(x => x.IdPatient);
+            .HasOne(x => x.Prescription)
+            .WithMany(x => x.Prescription_Meds)
+            .HasForeignKey(x => x.IdPrescription);
     }
 }

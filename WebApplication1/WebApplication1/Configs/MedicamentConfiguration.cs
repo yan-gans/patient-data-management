@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using WebApplication1.Entities;
 namespace WebApplication1.Configs;
 
-public class MedicamentConfiguration
+public class MedicamentConfiguration: IEntityTypeConfiguration<Medicament>
 {
     public void Configure(EntityTypeBuilder<Medicament> modelBuilder)
     {

@@ -1,4 +1,4 @@
-﻿namespace WebApplication1.Entities;
+namespace WebApplication1.Entities;
 
 public class Prescription
 {
@@ -8,7 +8,8 @@ public class Prescription
     public int IdDoctor { get; set; }
     public int IdPatient { get; set; }
     
-    public virtual Doctor Doctor { get; }
-    public virtual Patient Patient { get; }
-    public virtual ICollection<Prescription_Medicament> Prescription_Meds { get; }
+    public virtual Doctor Doctor { get; }= null!;
+    public virtual Patient Patient { get; }= null!;
+    public virtual ICollection<PrescriptionMedicament> Prescription_Meds { get; }= null!;
+
 }
